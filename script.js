@@ -10,14 +10,14 @@ function writePassword() {
     var winLength = window.prompt("How long do you want your password to be?");
         console.log(winLength);
     
-    var winSpecialChars = window.prompt("Do you want to include special characters?")
-    //console.log(winSpecialChars);
+    //var winSpecialChars = window.prompt("Do you want to include special characters?")
+        //console.log(winSpecialChars);
     //var winLwrCase = window.prompt("Do you want to include lowercase characters?")
     //console.log(winLwrCase);2
     //var winUpprCase = window.prompt("Do you want to include uppercase characters?")
     //console.log(winUpprCase);
-    //var password = generatePassword();2
-    var passwordText = document.querySelector("#password");1
+    //var password = generatePassword();
+    var passwordText = document.querySelector("#password");
 
     passwordText.value = password;
 
@@ -28,13 +28,9 @@ function writePassword() {
     if (winLength > charMax) {
         alert("Password must have a minumum of eight characters and cannot exceed 128 characters");
     }  
-
-    if (winSpecialChars === "ok") {
-        console.log("Special Characters will be included")
-    }
 }
 
-// Add event listener to generate button190
+// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
     
 writePassword();
