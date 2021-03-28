@@ -1,36 +1,51 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+//object containg functions
+const randomFunc = {
+    lower: getRandomLower,
+    upper: getRandomUpper,
+    number: getRandomNmbr,
+    symbol: getRandomSymbl,
+};
+
+//limitation variables
+var charMax = 128;
+var charMin = 8;
+var specialChars = true;1213
+var lowerCase = true;
+var upperCase = true;
+
 // Write password to the #password input
 function writePassword() {
-    var charMax = 128;
-    var charMin = 8;
-    var specialChars = "!@#$%^&*_+";
-
-    var winLength = window.prompt("How long do you want your password to be?");
-        console.log(winLength);
-    
-    //var winSpecialChars = window.prompt("Do you want to include special characters?")
-        //console.log(winSpecialChars);
-    //var winLwrCase = window.prompt("Do you want to include lowercase characters?")
-    //console.log(winLwrCase);2
-    //var winUpprCase = window.prompt("Do you want to include uppercase characters?")
-    //console.log(winUpprCase);
-    //var password = generatePassword();
+    var promptUser = window.prompt("How long do you want your password to be?")
     var passwordText = document.querySelector("#password");
-
     passwordText.value = password;
-
-    if (winLength < charMin) {
-        alert("Password must have a minumum of eight characters and cannot exceed 128 characters");
-    } 
-
-    if (winLength > charMax) {
-        alert("Password must have a minumum of eight characters and cannot exceed 128 characters");
-    }  
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-    
+generateBtn.addEventListener("click", writePassword());
+
+//generator functions
+
+function getRandomLower() {
+    return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
+}
+
+function getRandomUpper() {
+    return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
+}
+
+function getRandomNmbr() {
+    return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
+}
+
+function getRandomSymbl() {
+    const symbols = "!@#$%^&*_+";
+    return symbols[Math.floor(Math.random() * symbols.length)];
+}
+
+console.log(charMax);
+
+//call functions
 writePassword();
