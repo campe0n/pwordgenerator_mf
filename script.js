@@ -4,21 +4,28 @@ var generateBtn = document.querySelector("#generate");
 //global variables
 var charMax = 128;
 var charMin = 8;
-var lowerCase = true;
-var upperCase = true;
+var lowerCase = false;
+var upperCase = false;
 
 // Write password to the #password input
 function writePassword() {
-  var promptUser = prompt("How long do you want your password to be?")
+  var promptUser = prompt("How long do you want your password to be?");
   if (promptUser < 8) {
-    alert("Password must be at least 8 characters long.")
+    alert("Password must be at least 8 characters long.");
+  } else if
+  (promptUser > 128) {
+    alert("Password cannot exceed 128 characters.");
   }
-  if (promptUser > 128) {
-    alert("Password cannot exceed 128 characters.")
+  var askLowercase = prompt("Would you like to include lower case characters?", "Click ok or type no");
+  if (askLowercase != null) {
+    lowerCase = !lowerCase;
   }
-  var askLowercase = prompt("Would you like to include lower case characters?", "Type yes or no.")
- 
-  //var askUppercase = prompt("Would you like to include upper case characters?")
+  console.log(lowerCase);
+  var askUppercase = prompt("Would you like to include upper case characters?");
+  if (askUppercase != null) {
+    upperCase = !upperCase;
+  }
+  console.log(upperCase);
   //var askSpecialChars = prompt("Would you like to include special characters in your password?")
   
   function generatePassword() {
@@ -26,6 +33,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
   }
+  return;
 }
 
 //generate functions
