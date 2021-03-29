@@ -39,12 +39,12 @@ function writePassword() {
   console.log(upperCase);
   console.log(specialChars);
 
-function generatePassword(lowerCase, upperCase, specialChars) {
-  var password = generatePassword();
+  var password = '';
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 
-  }
+  for (let i = 0; i < number; i++)
+    password += getRandomUpper;
 }
 
 console.log(getRandomLower);
