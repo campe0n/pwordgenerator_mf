@@ -1,30 +1,28 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-//object containg functions
-const randomFunc = {
-    lower: getRandomLower,
-    upper: getRandomUpper,
-    number: getRandomNmbr,
-    symbol: getRandomSymbl,
-};
-
-//limitation variables
+// Write password to the #password input
+function writePassword(){
 var charMax = 128;
 var charMin = 8;
 var specialChars = true;1213
 var lowerCase = true;
 var upperCase = true;
+var passwordText = document.querySelector("#password");
+passwordText.value = password;
+var promptUser = prompt("How long do you want your password to be?", "Enter a number.")
 
-// Write password to the #password input
-function writePassword() {
-    var promptUser = window.prompt("How long do you want your password to be?")
-    var passwordText = document.querySelector("#password");
-    passwordText.value = password;
+if (promptUser < 8) {
+    alert("Password must be at least 8 characters long.")
+}
+if (promptUser > 128) {
+    alert("Password cannot exceed 128 characters.")
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword());
+var askLowercase = prompt("Would you like to include lower case characters?", "Type yes or no.")
+var askUppercase = prompt("Would you like to include upper case characters?")
+var askSpecialChars = prompt("Would you like to include special characters in your password?")
+}
 
 //generator functions
 
