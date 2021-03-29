@@ -1,41 +1,56 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-//global variables
+//global vars
 var charMax = 128;
 var charMin = 8;
 var lowerCase = false;
 var upperCase = false;
+var specialChars = false;
 
 // Write password to the #password input
 function writePassword() {
-  var promptUser = prompt("How long do you want your password to be?");
-  if (promptUser < 8) {
+
+  var number = prompt("How long do you want your password to be?");
+  if (number < 8) {
     alert("Password must be at least 8 characters long.");
   } else if
-  (promptUser > 128) {
+  (number > 128) {
     alert("Password cannot exceed 128 characters.");
   }
-  var askLowercase = prompt("Would you like to include lower case characters?", "Click ok or type no");
-  if (askLowercase != null) {
+
+  var askLowercase = confirm("Would you like to include lower case characters?", "Click ok or type no");
+  if (askLowercase === true) {
     lowerCase = !lowerCase;
   }
-  console.log(lowerCase);
-  var askUppercase = prompt("Would you like to include upper case characters?");
-  if (askUppercase != null) {
+
+  var askUppercase = confirm("Would you like to include upper case characters?");
+  if (askUppercase === true) {
     upperCase = !upperCase;
   }
+
+  var askSpecialChars = confirm("Would you like to include special characters in your password?")
+  if (askSpecialChars === true) {
+    specialChars = !specialChars;
+  }
+
+  console.log(number);
+  console.log(lowerCase);
   console.log(upperCase);
-  //var askSpecialChars = prompt("Would you like to include special characters in your password?")
-  
-  function generatePassword() {
+  console.log(specialChars);
+
+function generatePassword(lowerCase, upperCase, specialChars) {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
+
   }
-  return;
 }
 
+console.log(getRandomLower);
+console.log(getRandomUpper);
+console.log(getRandomNmbr);
+console.log(getRandomSymbl);
 //generate functions
 function getRandomLower() {
   return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
