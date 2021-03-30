@@ -5,11 +5,13 @@ var passwordText = document.querySelector("#password");
 //global vars
 var charMax = 128;
 var charMin = 8;
-let charSet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*_+"
+let charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*_+0123456789";
+var numbers = false;
 var lowerCase = false;
 var upperCase = false;
 var specialChars = false;
 var password = '';
+var number = undefined;
 
 // Write password to the #password input
 function writePassword() {
@@ -23,7 +25,12 @@ function writePassword() {
     alert("Password cannot exceed 128 characters.");
   }
 
-  var askLowercase = confirm("Would you like to include lower case characters?", "Click ok or type no");
+  var askNumbers = confirm("Would you like to include numbers?", "Click ok or type no");
+  if (askNumbers === true) {
+    numbers = !numbers;
+  }
+
+  var askLowercase = confirm("Would you like to include lower case characters?");
   if (askLowercase === true) {
     lowerCase = !lowerCase;
   }
@@ -39,19 +46,22 @@ function writePassword() {
   }
 
   for (let i = 0; i < numberLimit; i++) {
-    let number = Math.floor(Math.random() * charSet.length);
+    var number = Math.floor(Math.random() * charSet.length);
     password += charSet.substring(number, number + 1);
   }
-  
+
+ 
+  console.log(number);
 
   passwordText.value = password;
 
   console.log(numberLimit);
+  console.log(numbers);
   console.log(lowerCase);
   console.log(upperCase);
   console.log(specialChars);
   console.log(password);
-}
+}  
 
 //Event listener
 generateBtn.addEventListener("click", function(){
