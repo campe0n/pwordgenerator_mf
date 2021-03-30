@@ -23,6 +23,11 @@ function writePassword() {
     alert("Password cannot exceed 128 characters.");
   }
 
+  for (let i = 0; i < numberLimit; i++) {
+    let number = Math.floor(Math.random() * charSet.length);
+    password += charSet.substring(number, number + 1);
+  }
+
   var askLowercase = confirm("Would you like to include lower case characters?", "Click ok or type no");
   if (askLowercase === true) {
     lowerCase = !lowerCase;
@@ -38,10 +43,6 @@ function writePassword() {
     specialChars = !specialChars;
   }
 
-  for (let i = 0; i < numberLimit; i++) {
-    let number = Math.floor(Math.random() * charSet.length);
-    password += charSet.substring(numberLimit, numberLimit + 1);
-  }
   
   passwordText.value = password;
 
