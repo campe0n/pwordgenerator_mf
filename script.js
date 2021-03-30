@@ -5,13 +5,10 @@ var passwordText = document.querySelector("#password");
 //global vars
 var charMax = 128;
 var charMin = 8;
-let charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*_+0123456789";
-var numbers = false;
-var lowerCase = false;
-var upperCase = false;
-var specialChars = false;
-var password = '';
-var number = undefined;
+let charNumeric = "1234567890";
+let charLowercase = "abcdefghijklmnopqrstuvwxyz";
+let charUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let charSpecialChars = "!@#$%^&*_+";
 
 // Write password to the #password input
 function writePassword() {
@@ -25,41 +22,23 @@ function writePassword() {
     alert("Password cannot exceed 128 characters.");
   }
 
-  var askNumbers = confirm("Would you like to include numbers?", "Click ok or type no");
-  if (askNumbers === true) {
-    numbers = !numbers;
-  }
-
+  var askNumeric = confirm("Would you like to include numbers?", "Click ok or type no");
   var askLowercase = confirm("Would you like to include lower case characters?");
-  if (askLowercase === true) {
-    lowerCase = !lowerCase;
-  }
-
   var askUppercase = confirm("Would you like to include upper case characters?");
-  if (askUppercase === true) {
-    upperCase = !upperCase;
-  }
-
   var askSpecialChars = confirm("Would you like to include special characters in your password?")
-  if (askSpecialChars === true) {
-    specialChars = !specialChars;
-  }
-
+  
   for (let i = 0; i < numberLimit; i++) {
-    var number = Math.floor(Math.random() * charSet.length);
-    password += charSet.substring(number, number + 1);
+    var number = Math.floor(Math.random() * (charNumeric.length + charLowercase.length + charUppercase.length + charSpecialChars.length));
+    password += charNumeric.substring(number, number + 1) + charLowercase.substring(number, number + 1) +
+    charUppercase.substring(number, number + 1) + charSpecialChars.substring(number, number + 1);
   }
-
- 
-  console.log(number);
 
   passwordText.value = password;
 
-  console.log(numberLimit);
-  console.log(numbers);
-  console.log(lowerCase);
-  console.log(upperCase);
-  console.log(specialChars);
+  console.log(askNumeric);
+  console.log(askLowercase);
+  console.log(askUppercase);
+  console.log(askSpecialChars);
   console.log(password);
 }  
 
