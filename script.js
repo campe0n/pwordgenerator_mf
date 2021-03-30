@@ -1,21 +1,25 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var passwordText = document.querySelector("#password");
 
 //global vars
 var charMax = 128;
 var charMin = 8;
+let charSet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*_+"
 var lowerCase = false;
 var upperCase = false;
 var specialChars = false;
+var password = '';
 
 // Write password to the #password input
 function writePassword() {
+  var password = '';
 
-  var number = prompt("How long do you want your password to be?");
-  if (number < 8) {
+  var numberLimit = prompt("How long do you want your password to be?");
+  if (numberLimit < 8) {
     alert("Password must be at least 8 characters long.");
   } else if
-  (number > 128) {
+  (numberLimit > 128) {
     alert("Password cannot exceed 128 characters.");
   }
 
@@ -34,37 +38,21 @@ function writePassword() {
     specialChars = !specialChars;
   }
 
-  console.log(number);
+  for (let i = 0; i < numberLimit; i++) {
+    let number = Math.floor(Math.random() * charSet.length);
+    password += charSet.substring(numberLimit, numberLimit + 1);
+  }
+  
+  passwordText.value = password;
+
+  console.log(numberLimit);
   console.log(lowerCase);
   console.log(upperCase);
   console.log(specialChars);
-
-  var password = '';
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-
-  for (let i = 0; i < number; i++)
-    password += getRandomUpper;
+  console.log(password);
 }
 
-console.log(getRandomLower);
-console.log(getRandomUpper);
-console.log(getRandomNmbr);
-console.log(getRandomSymbl);
-//generate functions
-function getRandomLower() {
-  return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
-}
-
-function getRandomUpper() {
-  return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
-}
-
-function getRandomNmbr() {
-  return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
-}
-
-function getRandomSymbl() {
-  const symbols = "!@#$%^&*_+";
-  return symbols[Math.floor(Math.random() * symbols.length)];
-}
+//Event listener
+generateBtn.addEventListener("click", function(){
+  writePassword()
+});
