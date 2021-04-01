@@ -5,6 +5,7 @@ var passwordText = document.querySelector("#password");
 //global vars
 var charMax = 128;
 var charMin = 8;
+let charSet = "1234567890"
 let charNumeric = "1234567890";
 let charLowercase = "abcdefghijklmnopqrstuvwxyz";
 let charUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
