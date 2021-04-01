@@ -5,11 +5,7 @@ var passwordText = document.querySelector("#password");
 //global vars
 var charMax = 128;
 var charMin = 8;
-let charSet = "1234567890"
-let charNumeric = "1234567890";
-let charLowercase = "abcdefghijklmnopqrstuvwxyz";
-let charUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let charSpecialChars = "!@#$%^&*_+";
+let charSet = "1234567890abcdefghjijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*_+";
 
 // Write password to the #password input
 function writePassword() {
@@ -29,17 +25,13 @@ function writePassword() {
   var askSpecialChars = confirm("Would you like to include special characters in your password?")
   
   for (let i = 0; i < numberLimit; i++) {
-    var number = Math.floor(Math.random() * (charNumeric.length + charLowercase.length + charUppercase.length + charSpecialChars.length));
-    password += charNumeric.substring(number, number + 1) + charLowercase.substring(number, number + 1) +
-    charUppercase.substring(number, number + 1) + charSpecialChars.substring(number, number + 1);
+    var number = Math.floor(Math.random() * charSet.length)
+    password += charSet.substring(number, number + 1)
   }
 
   passwordText.value = password;
 
-  console.log(askNumeric);
-  console.log(askLowercase);
-  console.log(askUppercase);
-  console.log(askSpecialChars);
+  console.log(charSet);
   console.log(password);
 }  
 
@@ -47,3 +39,26 @@ function writePassword() {
 generateBtn.addEventListener("click", function(){
   writePassword()
 });
+
+//Generator functions
+function getRandomNumber() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+}
+
+function getRandomLower() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+}
+
+function getRandomUpper() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+}
+
+function getRandomSymbol() {
+  const symbols = "!@#$%^&*_+"
+  return symbols[Math.floor(Math.random() * symbols.length)];
+}
+
+console.log(getRandomNumber());
+console.log(getRandomLower());
+console.log(getRandomUpper());
+console.log(getRandomSymbol());
