@@ -28,16 +28,19 @@ function writePassword() {
   
   for (let i = 0; i < numberLimit; i++) {
     var password = '';
-    var number = Math.floor(Math.random() * lowerCase.length + upperCase.length +
-    numberSet.length + symbols.length)
-    if (askNumeric === true) password += numberSet;
-    if (askLowercase === true) password += lowerCase;
-    if (askUppercase === true) password += upperCase;
-    if (askSpecialChars === true) password += symbols;
+    let number = Math.floor(Math.random() * lowerCase.length + upperCase.length + numberSet.length
+    + symbols.length);
+    if (askNumeric === true) password = password.concat(numberSet);
+    if (askLowercase === true) password = password.concat(lowerCase);
+    if (askUppercase === true) password = password.concat(upperCase);
+    if (askSpecialChars === true) password = password.concat(symbols);
+    password += lowerCase.substring + upperCase.substring
+    + numberSet.substring+ symbols.substring(1, number + 1);
   }
   passwordText.value = password;
- 
-  console.log(number);
+
+  console.log(number)
+  console.log(typeof password)
   console.log(password);
 }  
 
